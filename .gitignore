@@ -1,0 +1,31 @@
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# Erlang
+deps
+logs
+ebin
+doc
+log
+_rel
+relx
+erl_crash.dump
+.erlang.mk
+*.beam
+*.plt
+*.d
+
+## Project
+.develop-environment
+.docker.event*
+priv/riak/modules/beam
+priv/riak/schemas/acl.xml
+*.tar.*

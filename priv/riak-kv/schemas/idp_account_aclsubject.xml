@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="default" version="1.5">
+	<!--
+		- cat: register
+		- mat: register
+		- groups: map
+			- ${GROUP_NAME}: map
+				- iat: register
+				- exp: register
+	-->
+
+	<fields>
+		<!-- created_at: int(unix_time(microseconds())) -->
+		<field name="cat_register" type="tint64" indexed="true" stored="false" multiValued="false" />
+		<!-- modified_at: int(unix_time(microseconds())) -->
+		<field name="mat_register" type="tint64" indexed="true" stored="false" multiValued="false" />
+		<!-- issued_at: int(unix_time(microseconds())) -->
+		<dynamicField name="*.iat_register" type="tint64" indexed="true" stored="false" multiValued="false" />
+		<!-- expired_at: int(unix_time(microseconds())) -->
+		<dynamicField name="*.exp_register" type="tint64" indexed="false" stored="false" multiValued="false" />
+
+		<!-- All of these fields are required by Riak Search -->
+		<field name="_yz_id" type="_yz_str" indexed="true" stored="true" multiValued="false" required="true" />
+		<field name="_yz_ed" type="_yz_str" indexed="true" stored="false" multiValued="false" />
+		<field name="_yz_pn" type="_yz_str" indexed="true" stored="false" multiValued="false" />
+		<field name="_yz_fpn" type="_yz_str" indexed="true" stored="false" multiValued="false" />
+		<field name="_yz_vtag" type="_yz_str" indexed="true" stored="false" multiValued="false" />
+		<field name="_yz_rk" type="_yz_str" indexed="true" stored="true" multiValued="false" />
+		<field name="_yz_rt" type="_yz_str" indexed="true" stored="true" multiValued="false" />
+		<field name="_yz_rb" type="_yz_str" indexed="true" stored="true" multiValued="false" />
+		<field name="_yz_err" type="_yz_str" indexed="true" stored="false" multiValued="false" />
+
+		<!-- Catch-All field -->
+		<dynamicField name="*" type="ignored" />
+	</fields>
+
+	<uniqueKey>_yz_id</uniqueKey>
+
+	<types>
+		<fieldType name="tint64" class="solr.TrieLongField" precisionStep="8" positionIncrementGap="0" />
+		<fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField" />
+
+		<!-- YZ String: Used for non-analyzed fields -->
+		<fieldType name="_yz_str" class="solr.StrField" sortMissingLast="true" />
+	</types>
+
+</schema>
