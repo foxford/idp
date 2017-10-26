@@ -1,5 +1,7 @@
 # Identity Provider
 
+[![Build Status][travis-img]][travis]
+
 Highly available, scalable and extendible Identity Provider.
 It utilises [OAuth2 Authorization Framework][rfc6749] to retrieve and associate
 one or many authentication identities (globally unique identifiers)
@@ -76,3 +78,5 @@ The source code is provided under the terms of [the MIT license][license].
 [license]:http://www.opensource.org/licenses/MIT
 [rfc6749]:https://tools.ietf.org/html/rfc6749
 [rfc6749-client-credentials]:https://tools.ietf.org/html/rfc6749#section-4.4
+[travis]:https://travis-ci.org/foxford/idp?branch=master
+[travis-img]:https://secure.travis-ci.org/foxford/idp.png?branch=master

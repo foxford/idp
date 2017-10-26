@@ -1,0 +1,13 @@
+language: erlang
+otp_release:
+  - 19.3
+  - 20.0
+services:
+  - docker
+install: make deps plt
+script: make dialyze eunit EUNIT_OPTS=verbose && ./ct-run-docker.sh
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+
